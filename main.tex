@@ -11,7 +11,7 @@
 
 \title{ENGN 8170 Group project\\ Corrosion and Gas Leaking Detection Robot\\ Project Initiation Document}
 
-\author{U6366102, U6561524, U6622423}
+\author{U6366102, U6561524, U6622423, U6647679, U6471573}
 
 \date{Submission date August 9, 2019}
 
@@ -32,12 +32,35 @@ The gas leak detection robot has more potential to grow with a variety of sensor
 %Sample image code
 %begin{figure}[H]
  %  \centering
-  % \includegraphics[height = 6cm, width = \textwidth]{}
+  % \includegraphics[width =8.5cm \textwidth]{}
    %\caption{Original image vs Noisy image}
     %label{fig:S1}
 %\end{figure}
+\section{Stakeholders}
+In the following sub-sections, we will be identifying and listing all our stakeholders, priority, requirements for the pipeline inspection robot and their usage of the robot.
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=8.5cm]{Stakeholders.png}}
+    \caption{List of Stakeholders}
+    \label{fig:2.1}
+\end{figure}
+\subsection{List of Stakeholders}
+The table 2.1 lists the stakeholders of the project, description of the stakeholders, interest, power and strategy used to manage them.
+
+\begin{tabular}{ |l|l|l|l|l|l|  }
+ \hline
+ U.I.D     & Name of the stakeholder &Description&Interest&Power&Strategy\\
+ \hline
+ S-01   & Investors    &&&&\\
+ S-02   &Suppliers  &&&&\\
+ S-03 &Producion/Exporters &&&&\\
+ S-04    &Maintenance authorities &&&&\\
+S-05&   Engineers  &&&&\\
+ S-06& Governance/Deciding Authorities &&&&\\
+ S-07& Customers&&&&\\
+ \hline
+\end{tabular}
 \section {Project Background}
- - Can write about Real life scenarios like causes and consequences and this robot will solve the problem.
+ - Can write about Real life scenarios like causes and consequences and this robot will solve the problem.\bigskip \\ 
  We came across numerous concepts on the implementation of gas detection robots. During our literature review we were able to understand the existing methodologies involve detection of gas leak through programmable logic controllers  and supervisory control and data acquisition. The primary reason for not implementing robot based solutions is its uncertainty (detailed in \ref{risks}) which cannot be factored even with thorough system engineering procedures. We are trying to tackle this problem and provide feasible solution which remains profitable for the oil/ gas exporters.  
 \section{Expectation}
 
@@ -61,7 +84,24 @@ Ex: Team leader, Mechanical Engineers, System engineers, Electrical engineers, E
 
 \section{Risks}
 \label{risks}
-
+The potential risk of the projects are being listed below
+\begin{itemize}
+    \item {During operation, robot can restrict the flow-rate of gas.}
+    \item{Lack of funds for fabricating the robot.}
+    \item{Robot performs well under test conditions, but not might fail under actual (unpredicted) condition.}
+    \item{Communication stopped due to failure of bluetooth/wifi module or signals blocked due to underground pipe.}
+    \item{Gas can leak inside robot’s hull, corrupting the controller}
+    \item{Electrical discharge in robot’s wiring can cause an explosion in the pipe (flammable gas).}
+    \item{Availability of all team members during all stages of project development cannot be ensured.}
+    \item{Delay in delivery of important components (eg. Sensors) can delay the entire project.}
+    \item{Lack of appropriate guidance while facing any unidentified errors during software operation can cause delays.}
+    \item{ANU maker-space lab might not be available as per our requirement, thus delaying fabrication.}
+    \item{Unpredictable number of iterations of prototyping and testing can result in deadlines not met.}
+    \item{Failure to track exact location of robot can lead to an inaccurate detection of leakage location.}
+    \item{Minute fracture in pipe might not be detected due to sensor noise.}
+    \item{Multiple leaks located very close to each other can be mistaken as a single leakage point.}
+    \item{Robot might breakdown inside the pipe, at a section which is inaccessible from the outside.}
+\end{itemize}
 \begin{thebibliography}{9}
 \bibitem{AEM}
   E. Kreyszig,
