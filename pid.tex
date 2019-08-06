@@ -1,8 +1,8 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,table]{article}
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\DeclareUnicodeCharacter{202F}{FIX ME!!!!} %fixes unicode 202F error
+\DeclareUnicodeCharacter{202F}{} %fixes unicode 202F error
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
@@ -12,6 +12,7 @@
 \usepackage{adjustbox}
 \usepackage{gensymb}
 
+
 %JUST FOR TABLE - BEGINS
 \usepackage{geometry}
 \usepackage{ragged2e}
@@ -19,8 +20,8 @@
 \renewcommand\theadfont{\bfseries}
 \renewcommand\theadgape{}
 \newcolumntype{L}{>{\RaggedRight}X}
+\usepackage{xcolor} % RISK ANALYSIS TABLE
 %TABLE USER PACKAGES ENDS
-
 \title{ENGN 8170 Group project\\ Corrosion and Gas Leaking Detection Robot\\ Project Initiation Document}
 
 \author{U6366102, U6561524, U6622423, U6647679, U6471573}
@@ -52,6 +53,12 @@ The gas leak detection robot has more potential to grow with a variety of sensor
    %\caption{Original image vs Noisy image}
     %label{fig:S1}
 %\end{figure}
+
+\section {Project Context}
+\subsection{Background}
+ - Can write about Real life scenarios like causes and consequences and this robot will solve the problem.\bigskip \\ 
+ We came across numerous concepts on the implementation of gas detection robots. During our literature review we were able to understand the existing methodologies involve detection of gas leak through programmable logic controllers  and supervisory control and data acquisition. The primary reason for not implementing robot based solutions is its uncertainty (detailed in \ref{risks}) which cannot be factored even with thorough system engineering procedures. We are trying to tackle this problem and provide feasible solution which remains profitable for the oil/ gas exporters.
+ \subsection{Business needs}
 \section{Stakeholders}
 In the following sub-sections, we will be identifying and listing all our stakeholders, priority, requirements for the pipeline inspection robot and their usage of the robot.Each of the stakeholders have their own Unique Identifiers (U.I.D). 
 \subsection{List of Stakeholders}
@@ -205,31 +212,10 @@ Individual peer assessment shall \\be submitted on or before the \\deadline sche
 \end{tabularx}
 \end{table}
 %EM TABLE ENDS
-
-\section {Project Background}
- - Can write about Real life scenarios like causes and consequences and this robot will solve the problem.\bigskip \\ 
- We came across numerous concepts on the implementation of gas detection robots. During our literature review we were able to understand the existing methodologies involve detection of gas leak through programmable logic controllers  and supervisory control and data acquisition. The primary reason for not implementing robot based solutions is its uncertainty (detailed in \ref{risks}) which cannot be factored even with thorough system engineering procedures. We are trying to tackle this problem and provide feasible solution which remains profitable for the oil/ gas exporters.  
-\section{Expectation}
-
-\section{Work breakdown/Schedule}
-
-\section{Team Organisation}
-Ex: Team leader, Mechanical Engineers, System engineers, Electrical engineers, Electronic engineers.
-%sample bullet
-%begin{itemize}
- %  \item {D0, B, tolerance are passed into the loop}
- %  \item{An atom is selected and their inter dependency with other atoms is computed in an iteration} 
- %  \item{The atom with highest correlation returns a non zero element to X}
-  % \item{Residue(r) of OMP gives information about the elements that are uncorrelated with B}
- %  \item{In main loop, Obtain the signal estimate $x_{k}$}
-  % \item{Compute the estimate $\hat{b_k}$ with signal estimate $x_{k}$ }
-  % \item{Update residue $r_{k+1}$ $\xleftarrow{}$ $r_k - \hat{b_k}$ }
-  % \item {Move on to next iteration, until maximum iterations or tolerance values are reached}
-%end{itemize}
-%newpage
-\section{Known Constraints}
+\section{Design need}
+\subsection{Constraints and Assumptions}
 \begin{itemize}
-    \item {\textit{Length \& diameter of pipe} - The length of the pipe that the robot will monitor for leakage will be about 1 metre. Longer distance pipeline will be hard to monitor with the prototype which has a few limitations. The diameter of the pipe shall be 10-15 cm for inspection.}
+    \item {\textit{Length \& diameter of pipe} - The length of the pipe that the robot will monitor for leakage will be about 1 metre. Longer distance pipeline will be hard to monitor with the prototype which has a few limitations. The diameter of the pipe shall be 10-15 cm for inspection.}
     \item{\textit{Material of the pipe} – The material under consideration currently is Polyvinyl chloride (PVC) for experimental tests to be performed.}
     \item{\textit{Pressure} - The gas that shall traverse through the pipeline is air with various pressures(1 atm). Any other gas with varying pressures would deem change in material, as well as constraints. (We will vary the pressures of the in-feed of the air for varying test conditions).}
     \item{\textit{Locomotion}- Simple wheel and caterpillar locomotory in-pipe inspection shall be implemented.}
@@ -246,6 +232,34 @@ Ex: Team leader, Mechanical Engineers, System engineers, Electrical engineers, E
     \item{\textit{Location of the robot} – Robot shall be operated inside the pipe, since outside operation deems to be effected by wind conditions, accuracy in noting imminent defects on the pipe, design conditions for robust and rigid operations.}
     \item{The robot’s operation must abide the AS 4024.3302:2017, ISO 10218-2011, Part 3302: Robots and Robotic Devices [2].}
 \end{itemize}
+\subsection{Operational Objectives}
+\subsection{Operational conditions}
+\subsubsection{Environment}
+\subsubsection{Scenarios}
+\section{Expectation}
+
+\section{Work breakdown/Schedule}
+\subsection{Deliverables}
+\subsection{Work breakdown structure}
+\subsection{Schedule}
+\section{Team Organisation}
+\subsection{Personal Skills matrix}
+\subsubsection{Strengths and Weaknesses}
+Ex: Team leader, Mechanical Engineers, System engineers, Electrical engineers, Electronic engineers.
+%sample bullet
+%begin{itemize}
+ %  \item {D0, B, tolerance are passed into the loop}
+ %  \item{An atom is selected and their inter dependency with other atoms is computed in an iteration} 
+ %  \item{The atom with highest correlation returns a non zero element to X}
+  % \item{Residue(r) of OMP gives information about the elements that are uncorrelated with B}
+ %  \item{In main loop, Obtain the signal estimate $x_{k}$}
+  % \item{Compute the estimate $\hat{b_k}$ with signal estimate $x_{k}$ }
+  % \item{Update residue $r_{k+1}$ $\xleftarrow{}$ $r_k - \hat{b_k}$ }
+  % \item {Move on to next iteration, until maximum iterations or tolerance values are reached}
+%end{itemize}
+%newpage
+
+
 \section {Resources}
 
 \section{Risks}
@@ -270,8 +284,22 @@ The potential risk of the projects are being listed below
     \item{Delay in delivery of important components (eg. Sensors) can delay the entire project.}
     \item{Lack of appropriate guidance while facing any unidentified errors during software operation can cause delays.}
     \item{ANU maker-space lab might not be available as per our requirement, thus delaying fabrication.}
-
 \end{itemize}
+
+\begin{table}[h!]
+\begin{adjustbox}{max width = \textwidth}
+\begin{tabular}{llllll}
+RISK                           & AREAS AFFECTED                                                             & SEVERITY                                                                                   & LIKELIHOOD                       & RISK IMPACT                    & \begin{tabular}[c]{@{}l@{}}RECOMMENDED\\   ACTION(S)\end{tabular}                                                                                              \\
+Sensor defects                 & Functionality of the robot                                                 & \cellcolor[HTML]{FFC702}Tolerable                                                          & \cellcolor[HTML]{FFCB2F}Possible & \cellcolor[HTML]{FFC702}Medium & \begin{tabular}[c]{@{}l@{}}Proper\\   calibration of sensors\end{tabular}                                                                                      \\
+Robot breakdown                & \begin{tabular}[c]{@{}l@{}}Transmission of\\   fluids\end{tabular}         & \cellcolor[HTML]{F56B00}\begin{tabular}[c]{@{}l@{}}Generally\\   unacceptable\end{tabular} & \cellcolor[HTML]{FFCB2F}Possible & \cellcolor[HTML]{F56B00}High   & \begin{tabular}[c]{@{}l@{}}Sectional inspection and checklists on pre-inspection explaining\\   the necessities for an inspection session\end{tabular}         \\
+Failure to detect minute holes & Functionality of the robot                                                 & \cellcolor[HTML]{FFC702}Tolerable                                                          & \cellcolor[HTML]{FFCB2F}Possible & \cellcolor[HTML]{F56B00}High   & Resolving sensor defects mitigates this risk                                                                                                                   \\
+Communication failure          & \begin{tabular}[c]{@{}l@{}}Functionality\\   of the robot\end{tabular}     & \cellcolor[HTML]{F56B00}\begin{tabular}[c]{@{}l@{}}Generally\\   unacceptable\end{tabular} & \cellcolor[HTML]{FFCB2F}Possible & \cellcolor[HTML]{F56B00}High   & Some level of autonomity helps in mitigating this risk                                                                                                         \\
+Gas leak into robot's hull     & Functionality of the robot                                                 & \cellcolor[HTML]{FFC702}Tolerable                                                          & \cellcolor[HTML]{FFCB2F}Possible & \cellcolor[HTML]{F56B00}High   & \begin{tabular}[c]{@{}l@{}}Some level of autonomity helps in mitigating this risk/ Building\\   the hull to handle 5x pressure than normal level.\end{tabular} \\
+Electrical discharge           & \begin{tabular}[c]{@{}l@{}}Inspection area\\   and pipelines\end{tabular}  & \cellcolor[HTML]{F56B00}\begin{tabular}[c]{@{}l@{}}Generally\\   unacceptable\end{tabular} & \cellcolor[HTML]{F56B00}probable & \cellcolor[HTML]{F56B00}High   & Proper insulation of electronic sensors and actuators                                                                                                          \\
+Failure in tracking            & Functionality of the robot                                                 & \cellcolor[HTML]{FFC702}Tolerable                                                          & \cellcolor[HTML]{FFCB2F}Possible & \cellcolor[HTML]{F56B00}High   & Initial tests help reduce this risk but not completely avoidable                                                                                               \\
+Insufficient funds             & \begin{tabular}[c]{@{}l@{}}Development of\\   proper solution\end{tabular} & \cellcolor[HTML]{FFC702}Tolerable                                                          & \cellcolor[HTML]{FFCB2F}Possible & \cellcolor[HTML]{F56B00}High   & \begin{tabular}[c]{@{}l@{}}Improving funds significantly improves in mitigating the above\\   risks\end{tabular}         \end{tabular}
+\end{adjustbox}
+\end{table}
 \begin{thebibliography}{9}
 \bibitem{AEM}
   E. Kreyszig,
