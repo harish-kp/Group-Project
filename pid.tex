@@ -2,6 +2,7 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{202F}{FIX ME!!!!} %fixes unicode 202F error
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
@@ -9,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{adjustbox}
+\usepackage{gensymb}
 
 %JUST FOR TABLE - BEGINS
 \usepackage{geometry}
@@ -127,8 +129,7 @@ S-07   & Customers
 %END OF TABLE
 
 \subsection{Expectation Matrix}
-The project expectations can be identified, defined and maintained using Expectation Matrix. This can be used to track or monitor the project. Expectation Matrix is given in the table \ref{2.2} It is characterised into four following information. \\
-\\
+The project expectations can be identified, defined and maintained using Expectation Matrix. This can be used to track or monitor the project. Expectation Matrix is given in the table \ref{2.2}. It is characterised into four following information.\bigskip \\
 \textbf{Expectation:} Outcome of the project and expectation of the stakeholders. \\
 \textbf{Priority:} Rank of the identified expectation when compared to the other ranked expectation. Levels: High, Medium and Low. \\
 \textbf{Category:} Group or Category to which the expectation suits to. For example, Engineer, Project Management, Public or Finance. \\
@@ -228,7 +229,22 @@ Ex: Team leader, Mechanical Engineers, System engineers, Electrical engineers, E
 %newpage
 \section{Known Constraints}
 \begin{itemize}
-    \item 
+    \item {\textit{Length \& diameter of pipe} - The length of the pipe that the robot will monitor for leakage will be about 1 metre. Longer distance pipeline will be hard to monitor with the prototype which has a few limitations. The diameter of the pipe shall be 10-15 cm for inspection.}
+    \item{\textit{Material of the pipe} – The material under consideration currently is Polyvinyl chloride (PVC) for experimental tests to be performed.}
+    \item{\textit{Pressure} - The gas that shall traverse through the pipeline is air with various pressures(1 atm). Any other gas with varying pressures would deem change in material, as well as constraints. (We will vary the pressures of the in-feed of the air for varying test conditions).}
+    \item{\textit{Locomotion}- Simple wheel and caterpillar locomotory in-pipe inspection shall be implemented.}
+    \item{\textit{Route Pathway Constraints} – Robot traversing through T-sections, Y-sections, 90\degree channels is still under consideration for the scope of the project.}
+    \item{\textit{Braking mechanism incorporated} – Designing a controller considering the kinematics of the robot and load distributions during traversing.}
+    \item{\textit{Sensory detection constraints} – The Field of View for the Thermal Camera module (Pimoroni MLX90640) shall be 110\degree x 75\degree, with 64 Frames per second and operational under dark conditions [1]. The operational pressure conditions for the pressure sensor module (BMP388) shall be (300 -1250 hPa) [ref].}
+    \item{\textit{Sensory Calibration/ resolution/ sensitivity Constraints} Temperature range of (-40 to 300\degree C) for thermal camera module and (-40 to 80\degree C) for pressure sensor module. Both modules shall be compatible with Arduino, I2C and can be operated under 5V. }
+    \item{\textit{Temperature} - The prototype will monitor the gas pipeline at around room temperature.}
+    \item{\textit{Battery} – The battery operational parameters shall be denoted as per the operational duration of our robot in terms of maintenance hours needed.}
+    \item{\textit{Motor constraints}- Brushless DC motor, servomotors and DC brushed gear motors shall be considered with trade-offs to speed, torque and accuracy.}
+    \item{\textit{Obstruction of Transmission \& Reception of data} might be hindered due to pipe’s Outerwall and various obstructions}
+    \item{\textit{Fabrication} of the robot’s chassis is subjected to be operated under pressurised air and for various gases and liquids, various other materials will have to be considered.}
+    \item{\textit{Communication platform (Between robot and receiving system)}shall be operated at 9.6 km for outdoors and 370 m indoors. (Digi Xbee Pro under consideration)}
+    \item{\textit{Location of the robot} – Robot shall be operated inside the pipe, since outside operation deems to be effected by wind conditions, accuracy in noting imminent defects on the pipe, design conditions for robust and rigid operations.}
+    \item{The robot’s operation must abide the AS 4024.3302:2017, ISO 10218-2011, Part 3302: Robots and Robotic Devices [2].}
 \end{itemize}
 \section {Resources}
 
