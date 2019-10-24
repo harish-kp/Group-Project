@@ -25,6 +25,7 @@
 #include<SoftwareSerial.h>
 #include <SparkFunLSM9DS1.h>
 #include <LPS25HBSensor.h>
+#include <Servo.h>
 // Déclaration des adresses du module
 #define LSM9DS1_M 0x1E
 #define LSM9DS1_AG 0x6B
@@ -42,7 +43,8 @@
 
 #endif
 LPS25HBSensor  *PressTemp;
-
+Servo motor;
+int pos = 0;
 LSM9DS1 imu; // Creation of the object imu
 
 // Configuration du module
@@ -58,8 +60,12 @@ static unsigned long lastPrint = 0;
 SoftwareSerial BTserial(0,1);
 int Data;
 float pressure1 = 946.0;
-const int pwm = 6;
-const int in_1 = 4; const int in_2 = 5;
+const int pwm = 6; //Enable
+const int in_1 = 4; const int in_2 = 5; // Motor pins
+const int pwm2 = 2; //Enable
+const int in_1_2 = 3; const int in_2_2 = 7; // Motor pins
+int state_r, state = 0;
+int flag = 0;
 void setup(void)
 {
  BTserial.begin(9600);
@@ -76,15 +82,21 @@ void setup(void)
  DEV_I2C.begin();
  PressTemp = new LPS25HBSensor (&DEV_I2C);
  PressTemp->Enable();
+ motor.attach(9);
  pinMode(pwm,OUTPUT); 
  pinMode(in_1,OUTPUT); 
  pinMode(in_2,OUTPUT);
+ pinMode(pwm2,OUTPUT); 
+ pinMode(in_1_2,OUTPUT); 
+ pinMode(in_2_2,OUTPUT);
 }
 
 void loop()
 {
  if(BTserial.available()){
     Data = analogRead(4);
+    state_r = Serial.read();
+    state = state_r;
     if (Data !='0'){
       if ( imu.gyroAvailable() )
        {
@@ -122,13 +134,54 @@ void loop()
        BTserial.print(temperature, 2);
        SerialPort.println(" |"); 
        BTserial.println(" |");
-       if (abs(PressTemp->GetPressure(&pressure) - pressure1) >= 0){
-          BTserial.println("Robot is moving");
-          Serial.println("Robot is moving");
+//       SerialPort.println(state);
+       delay(250);
+       if (state == '0') {
+        digitalWrite(in_1, LOW); 
+        digitalWrite(in_2, LOW);
+        digitalWrite(in_1_2, LOW); // set pin 2 on L293D low
+        digitalWrite(in_2_2, LOW); // set pin 7 on L293D low
+        for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+          // in steps of 1 degree
+          motor.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(25);                       // waits 15ms for the servo to reach the position
+        }
+        for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+          motor.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(25);                       // waits 15ms for the servo to reach the position
+        }
+        if(flag == 0){
+          Serial.println("Robot is standby");
+//          BTSerial.println("Robot in standby");
+          flag=1;
+        }
+    }
+       if (abs(PressTemp->GetPressure(&pressure) - pressure1) >= 0 && state == '2'){
+          BTserial.println("Robot is moving forward");
+          Serial.println("Robot is moving forward");
+          digitalWrite(in_1,LOW); 
+          digitalWrite(in_2,HIGH); 
+          analogWrite(pwm,255);
+          digitalWrite(in_1_2,LOW); 
+          digitalWrite(in_2_2,HIGH); 
+          analogWrite(pwm2,255);
+          motor.write(90);
+          flag =1;
+        }
+        else if (abs(PressTemp->GetPressure(&pressure) - pressure1) >= 0 && state == '1'){
+          BTserial.println("Robot is moving backward");
+          Serial.println("Robot is moving backward");
           digitalWrite(in_1,HIGH); 
           digitalWrite(in_2,LOW); 
           analogWrite(pwm,255);
+          digitalWrite(in_1_2,HIGH); 
+          digitalWrite(in_2_2,LOW); 
+          analogWrite(pwm2,255);
+          motor.write(90);
+          flag =1;
         } 
+        else
+        state = state;
     }
     else if (Data == '0'){
       Serial.println("No data received");
